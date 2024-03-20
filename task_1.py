@@ -127,5 +127,5 @@ def parse():
 
 
 if __name__ == '__main__':
-    print(find_roots(1, 10, 5))
+    print(find_roots(4, 10, 5))
     print(parse())
