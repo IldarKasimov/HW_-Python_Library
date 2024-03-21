@@ -83,9 +83,10 @@ import argparse
 from typing import Callable
 
 logging.basicConfig(filename="log_py.log", filemode="a", level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
-def save_to_json(func: Callable) -> Callable:
+def deco(func: Callable) -> Callable:
     def wrapper(*args):
         res = func(*args)
         return res
@@ -93,7 +94,7 @@ def save_to_json(func: Callable) -> Callable:
     return wrapper
 
 
-@save_to_json
+@deco
 def find_roots(a: int, b: int, c: int) -> str:
     try:
         a, b, c = int(a), int(b), int(c)
@@ -127,5 +128,5 @@ def parse():
 
 
 if __name__ == '__main__':
-    print(find_roots(4, 10, 5))
+    print(find_roots(4, 10, 'text'))
     print(parse())
